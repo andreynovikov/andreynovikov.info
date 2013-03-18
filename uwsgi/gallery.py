@@ -77,6 +77,12 @@ def image(request, imageId):
     if labels != None:
         image['labels'] = labels
 
+    session = loadSession(request.cookies.get('sess', None))
+    userId = session['user']
+    if userId != None:
+        cursor.execute('''INSERT INTO gallery_image_log VALUES(%s, %s, 5, NOW())''', (imageId, userId))
+        db.commit()
+
     cursor.close()
     response.text = json.dumps(image, indent=4, ensure_ascii=False)
     return response
@@ -99,6 +105,8 @@ def makeThumbnail(path, force = False):
         nx = ox * ny / oy
         image.resize(width=nx, height=ny)
         image.strip()
+        if os.path.isfile(tpath):
+            os.remove(tpath)
         image.save(filename=tpath)
     # Return path to thumbnail
     return tpath
@@ -118,6 +126,12 @@ def thumbnail(request, imageId):
     thumb = open(tpath, 'rb')
     buffer = thumb.read()
     thumb.close()
+
+    session = loadSession(request.cookies.get('sess', None))
+    userId = session['user']
+    if userId != None:
+        cursor.execute('''INSERT INTO gallery_image_log VALUES(%s, %s, 4, NOW())''', (imageId, userId))
+        db.commit()
     cursor.close()
 
     ms = magic.open(magic.MAGIC_MIME)
