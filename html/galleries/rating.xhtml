@@ -1,0 +1,47 @@
+<include src="top.xhti">
+
+<if condition="! #[User.id]">
+<set var="Input.top" value="1">
+</if>
+<use class="POEM::DBC">
+<use class="Image::Size">
+<if condition="#[User.id] != 1 && #[Input.top] != 1">
+<set var="Input.-filt\.user" value="#[User.id]">
+</if>
+<if condition="#[Input.-filt\.user]">
+<set var="where" value="qq[WHERE user = ].#[Input.-filt\.user].qq[ ]">
+</if>
+<if condition="#[Input.top]">
+<set var="censored" value="#[User.censorship] || 0">
+<set var="where" value="qq[WHERE censored <= ].#[censored].qq[ ]">
+<set var="having" value="qq[HAVING rating_average >= 4.0 AND rating_votes > 3 ]">
+</if>
+<set var="images" value="POEM::DBC->new->getRecords(qq[SELECT id, bundle, name, AVG(rating) AS rating_average, COUNT(rating) AS rating_votes FROM gallery_image_rating INNER JOIN gallery_image ON (id = image) #[where]GROUP BY image #[having]ORDER BY 4 DESC, 5 DESC LIMIT 1000])">
+<set var="curavg" value="10">
+<set var="curavgid" value="1">
+<div id="imageList">
+<for each="image" from="#[images]">
+<set var="tpath" value="'/galleries'.#[image.bundle].'/thumbs/t-'.#[image.name]">
+<set var="x" value="(Image::Size::imgsize(#[ENV.DOCUMENT_ROOT].#[tpath]))[0]">
+<set var="y" value="(Image::Size::imgsize(#[ENV.DOCUMENT_ROOT].#[tpath]))[1]">
+<if condition="#[curavg] > #[image.rating_average]">
+<set var="curavg" value="int(#[image.rating_average]*5)/5">
+
+<h2 class="rating">
+<span id="rating#[curavgid]" class="rating"></span>
+<script type="text/javascript">
+$(function(){
+  $('#rating#[curavgid]').raty({
+    readOnly : true,
+    score    : #[curavg]
+  });
+});
+</script>
+&nbsp;#[curavg%.1f]</h2>
+<set var="curavgid" value="#[curavgid] + 1">
+</if>
+<span><a href="/galleries#[image.bundle]/#[image.name]?mode=info"><img src="/galleries#[image.bundle]/#[image.name]?mode=thumbnail" style="width: #[x]px; height: #[y]px; margin: 5px 10px"></a><if condition="#[User.id] == 1"><span class="votes">#[image.rating_votes]</span></if></span>
+</for>
+</div>
+
+<include src="bottom.xhti">

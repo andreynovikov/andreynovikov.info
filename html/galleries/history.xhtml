@@ -1,0 +1,67 @@
+<html>
+<head>
+<style type="text/css">
+#imageList a { position: relative; float: left }
+</style>
+</head>
+<body>
+<use class="POEM::DBC">
+<use class="Image::Size">
+
+<if condition="#[Input.-filt\.label] != 424">
+<set var="where" value="q[ AND gallery_image_log.ctime > '20120801000000']">
+</if>
+<if condition="#[Input.-filt\.label]">
+<set var="join" value="q[ INNER JOIN gallery_label_image ON (gallery_image_log.image = gallery_label_image.image)]">
+<set var="where" value="#[where].q[ AND label = ].#[Input.-filt\.label]">
+</if>
+<if condition="#[Input.-filt\.status] ne ''">
+<set var="where" value="#[where].q[ AND status = ].#[Input.-filt\.status]">
+</if>
+<if condition="#[Input.user]">
+<if condition="#[User.id] != 1">
+<set var="where" value="#[where].q[ AND (censored < 1 OR (censored < 2 AND gallery_image_log.ctime < '20130528000000'))]">
+</if>
+<set var="user" value="POEM::Entity->new('poem::user')->load(#[Input.user])">
+<h1>#[user.name] (#[user.login])</h1>
+<if condition="#[Input.date]">
+<set var="wa" value="q[ AND DATE_FORMAT(gallery_image_log.ctime,'%Y-%m-%e') = '].#[Input.date].q[']">
+<else>
+<set var="sa" value="q[ DATE_FORMAT(gallery_image_log.ctime,'%Y-%m-%e') AS date, ]">
+<set var="ga" value="q[, date]">
+</if>
+<set var="images" value="POEM::DBC->new->getRecords(q[SELECT gallery_image.id, bundle, name,].#[sa].q[ MIN(status) AS status FROM gallery_image_log INNER JOIN gallery_image ON (gallery_image_log.image = gallery_image.id)].#[join].q[ WHERE user = ].#[Input.user].#[wa].#[where].q[ GROUP BY gallery_image.id].#[ga].q[ ORDER BY gallery_image_log.ctime])">
+<set var="date" value="''">
+<div id="imageList">
+<for each="image" from="#[images]">
+<if condition="! #[Input.date] && #[image.date] ne #[date]">
+<div style="font-weight: bold; clear: left">#[image.date]</div>
+<set var="date" value="#[image.date]">
+</if>
+<set var="color" value="#[image.status] == 0 && #[User.id] == 1 ? '#faa' : #[image.status] == 1 ? '#afa' : #[image.status] == 2 ? '#6a6' : #[image.status] == 4 ? '#aaf' : #[image.status] == 5 ? '#faf' : '#ccc'">
+<set var="tpath" value="'/galleries'.#[image.bundle].'/thumbs/t-'.#[image.name]">
+<set var="x" value="(Image::Size::imgsize(#[ENV.DOCUMENT_ROOT].#[tpath]))[0]">
+<set var="y" value="(Image::Size::imgsize(#[ENV.DOCUMENT_ROOT].#[tpath]))[1]">
+<set var="tx" value="int(#[x] / 4)">
+<set var="ty" value="int(#[y] / 4)">
+<set var="m" value="80 - #[ty]">
+<set var="ax" value="#[tx] + 30">
+<set var="ay" value="#[ty] + 30 + #[m]">
+<a href="/galleries#[image.bundle]/#[image.name]?mode=info" style="width: #[ax]; height: #[ay]"><img src="#[tpath]" style="width: #[tx]; height: #[ty]; border: 10px solid #[color]; margin: 5px 5px #[m]px" xonmouseover="this.style.position='absolute'; this.style.width='#[x]px'; this.style.height='#[y]px'; this.style.zIndex = 100" xonmouseout="this.style.width='#[tx]px'; this.style.height='#[ty]px'; this.style.position='relative'; this.style.zIndex = 0"></a>
+</for>
+</div>
+<else>
+<set var="users" value="POEM::DBC->new->getRecords(q[SELECT DISTINCT user.id, user.login, user.name, DATE_FORMAT(gallery_image_log.ctime,'%Y-%m-%e') AS date FROM gallery_image_log INNER JOIN user ON (user.id = user)].#[join].q[ WHERE user.id NOT IN (1)].#[where].q[ ORDER BY gallery_image_log.ctime DESC])">
+<set var="date" value="''">
+<set var="filt" value="#[ENV.QUERY_STRING] ? '&'.#[ENV.QUERY_STRING] : ''">
+<for each="user" from="#[users]">
+<if condition="#[user.date] ne #[date]">
+<div style="font-weight: bold">#[user.date]</div>
+<set var="date" value="#[user.date]">
+</if>
+<div><a href="?user=#[user.id]&date=#[date|URL]#[filt]">#[user.name] (#[user.login])</a></div>
+</for>
+</if>
+</body>
+</html>
+

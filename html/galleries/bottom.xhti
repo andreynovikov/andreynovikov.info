@@ -1,0 +1,29 @@
+</div>
+</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+    function addMega()       
+    {
+        $(this).addClass("hovering");
+    }
+                        
+    function removeMega()
+    {
+        $(this).removeClass("hovering");
+    }
+          
+    var megaConfig = {
+         interval: 150,
+         sensitivity: 4,      
+         over: addMega,
+         timeout: 150,
+         out: removeMega
+    };
+        
+    $("li.mega").hoverIntent(megaConfig)
+        
+});
+</script>
+</body>
+</html>

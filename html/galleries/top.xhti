@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru" xml:lang="ru">
+<head>
+<meta name="robots" content="nofollow" />
+
+<link type="text/css" rel="stylesheet" href="/site/css/site.css" />
+<link type="text/css" rel="stylesheet" href="/site/css/gallery.css" />
+<link type="text/css" rel="stylesheet" href="/site/css/dark-hive/jquery-ui-1.9.2.custom.min.css" />
+<link type="text/css" rel="stylesheet" href="/site/css/jquery.qtip.min.css" />
+
+<script type="text/javascript" src="/site/js/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="/site/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script type="text/javascript" src="/site/js/jquery.ajaxmanager.js"></script>
+<script type="text/javascript" src="/site/js/jquery.MetaData.js"></script>
+<script type="text/javascript" src="/site/js/jquery.galleria-1.3.0.js"></script>
+<script type="text/javascript" src="/site/js/jquery.hoverIntent.minified.js"></script>
+<script type="text/javascript" src="/site/js/jquery.raty-2.4.5.min.js"></script>
+<script type="text/javascript" src="/site/js/jquery.qtip.min.js"></script>
+<script type="text/javascript" src="/site/js/jquery.simplemodal.1.4.3.min.js"></script>
+
+<script type="text/javascript">
+$.fn.raty.defaults.path = '/site/img/';
+$.fn.raty.defaults.hints = ['Удалите немедленно!', 'Ничего особенного', 'Стоит посмотреть', 'Нравится', 'Великолепно!'];
+$.fn.raty.defaults.targetText = '';
+$.fn.raty.defaults.space = false;
+
+function label(href)
+{
+  var form = document.getElementById('filter');
+  for (var i = 0; i < form.elements.length; i++)
+  {
+    var field = form.elements[i];
+    if (field.name)
+      href = href + '&' + field.name + '=' + field.value;
+  }
+  location.href=href;
+}
+
+document.write('<style>.noscript { display: none; }</style>');
+</script>
+</head>
+<body>
+<div id="page">
+<div id="container">
+<if condition="#[showTopRated]">
+<include src="toprated.xhti">
+</if>
+<div id="nav">
+<div style="float: right">
+<use taglib="POEM::Auth::TagLib">
+<registered>
+#[User.name]:
+<a href="/admin/login.xhtml?-action=logout;-back=/galleries/">Выйти</a>
+&bull; <a id="favoritesLink" href="/cgi-bin/g.cgi?mode=favorites">Избранное</a>
+<script type="text/javascript">
+$('#favoritesLink').qtip({
+  content: "Здесь хранятся фотографии, помеченные вами, как избранные.",
+  position: { at: "bottom center", my: "top center" }
+})
+</script>
+&bull; <a id="ratingsLink" href="/galleries/rating.xhtml">Мои рейтинги</a>
+<script type="text/javascript">
+$('#ratingsLink').qtip({
+  content: "Здесь хранятся фотографии, которым вы поставили оценку.",
+  position: { at: "bottom center", my: "top center" }
+})
+</script>
+<!--#
+&bull; Семейный фильтр:
+<set var="state" value="#[User.censorship] > 0 ? 'выкл.' : 'вкл.'">
+<a id="censorshipLink" style="cursor: pointer">#[state]</a>
+<script type="text/javascript">
+var censore = #[User.censorship] ? 1 : 0;
+$("#censorshipLink").click(function () {
+  $.ajax({
+    url: '/cgi-bin/ajax.cgi',
+    data: { action: 'censorship', censorship: 1 - censore },
+    cache: false,
+    success: function(html){
+       censore = 1 - censore;
+       $("#censorshipLink").html(censore ? 'выкл.' : 'вкл.');
+    }
+  });
+});
+$('#censorshipLink').qtip({
+  content: "Управление отображением контента, не подходящего для просмотра всеми пользователями.",
+  position: { at: "bottom left", my: "top right" }
+});
+</script>
+-->
+</registered>
+<anonymous>
+<a id="loginLink" href="#[ENV.POEM_LOGIN_URL]?-back=#[ENV.REQUEST_URI|URL]">Войти</a>
+<script type="text/javascript">
+$('#loginLink').qtip({
+   content: 'Чтобы увидеть фотографии необходимо представиться.',
+   show: {
+                event: "mouseover"
+        },
+        hide: {
+                event: "mouseout"
+        },
+        position: {
+                at: "bottom middle",
+                my: "top right"
+        },
+        style: {
+                tip: "topRight"
+        }
+});
+setTimeout(function(){
+    $('#loginLink').qtip("show");
+  }, 2000 );
+</script>
+</anonymous>
+</div>
+<set var="qs" value="#[ENV.QUERY_STRING]">
+<do expression="#[qs] =~ s/(^|&|;)layout=[^&;]+//o">
+<do expression="#[qs] =~ s/(^|&|;)\-nav\.back=[^&;]+//o">
+<do expression="#[qs] =~ s/[&;]{2,}/;/go">
+<do expression="#[qs] =~ s/(^[&;]|[&;]$)//go">
+
+
+<ul id="menu">
+<li class="mega"><span class="l1"><a href="#">Галерея</a></span><div class="c">
+  <p><a href="/galleries/">Главная страница</a> галереи с выбором по меткам.</p>
+  <div class="l2">Новинки</div>
+  <p>
+<set var="last" value="POEM::DBC->new->getValue('SELECT MAX(ctime) FROM gallery_image')">
+<set var="week" value="POEM::DBC->new->getValue(qq[SELECT COUNT(id) FROM gallery_image WHERE DATE_ADD(gallery_image.ctime, INTERVAL 7 DAY) > '#[last]'])">
+<set var="month" value="POEM::DBC->new->getValue(qq[SELECT COUNT(id) FROM gallery_image WHERE DATE_ADD(gallery_image.ctime, INTERVAL 1 MONTH) > '#[last]'])">
+    <a class="slideshow" href="/galleries/slideshow.xhtml?-filt.lastweek=#[last|URL];-nav.sort=ctime+DESC">За неделю (#[week])</a>,
+    <a class="slideshow" href="/galleries/slideshow.xhtml?-filt.lastmonth=#[last|URL];-nav.sort=ctime+DESC">За месяц (#[month])</a>
+  </p>
+  <div class="l2">Заслуживающие внимания</div>
+  <p>
+    <a class="slideshow" href="/galleries/slideshow.xhtml?-filt.author=1;-filt.starred=1;-nav.sort=stime+DESC">Олины</a>,
+    <a class="slideshow" href="/galleries/slideshow.xhtml?-filt.author=2;-filt.starred=1;-nav.sort=stime+DESC">Андреевы</a>,
+    <a href="/galleries/rating.xhtml?top=1">C лучшим рейтингом</a>
+  </p>
+  <div class="l2">Статистика</div>
+  <p>
+<set var="total" value="POEM::DBC->new->getValue('SELECT COUNT(id) FROM gallery_image')">
+Всего фотографий: #[total],
+<set var="olyas" value="POEM::DBC->new->getValue('SELECT COUNT(id) FROM gallery_image WHERE author=1')">
+<set var="andreys" value="POEM::DBC->new->getValue('SELECT COUNT(id) FROM gallery_image WHERE author=2')">
+из них олиных: #[olyas], андреевых: #[andreys],
+<set var="unprocessed" value="POEM::DBC->new->getValue('SELECT COUNT(id) FROM gallery_image WHERE author IS NULL')">
+необработанных: #[unprocessed].
+<set var="starred" value="POEM::DBC->new->getValue('SELECT COUNT(id) FROM gallery_image WHERE starred>0')">
+Заслуживающих внимания: #[starred].
+  </p>
+</div></li><!--
+<li><a href="/galleries/map">Карта</a> (временно очень тормозит)</li>
+<li><a href="/galleries/map?-filt.labels=7">Оля на карте</a></li>
+<li><a href="/galleries/map?-filt.labels=3">Андрей на карте</a></li>
+--><li class="mega"><span class="l1"><a href="#">Выставки</a></span><div class="c">
+    <a class="slideshow" href="/galleries/slideshow.xhtml?-filt.author=1;-filt.labels=17;-nav.sort=stime+ASC">Олины концепты</a><br>
+    <a class="slideshow" href="/galleries/slideshow.xhtml?-filt.author=2;-filt.labels=17;-nav.sort=stime+ASC">Андреевы концепты</a><br>
+  </div></li><li class="mega"><span class="l1"><a href="#">Подшивки</a></span>
+  <div class="c bundle">
+<set var="bundles" value="POEM::DBC->new->getRecords('SELECT bundle AS name, count(name) AS count FROM gallery_image GROUP BY bundle ORDER BY 1 ASC')">
+<set var="fourth" value="int(scalar(@{#[bundles]})/4)+1">
+<set var="half" value="#[fourth] * 2">
+<set var="threefourth" value="#[fourth] * 3">
+<set var="i" value="0">
+<for each="bundle" from="#[bundles]">
+<if condition="#[i] == 0">
+  <table id="catalog"><tr><td>
+</if>
+<if condition="#[i] == #[fourth] || #[i] == #[half] || #[i] == #[threefourth]">
+  </td><td class="b">
+</if>
+    <a class="slideshow" href="/galleries#[bundle.name]/slideshow.xhtml">#[bundle.name]&nbsp;(#[bundle.count])</a><br />
+<set var="i" value="#[i] + 1">
+</for>
+  </td></tr></table>
+  </div>
+</li>
+<if condition="#[showadmin] && POEM::Auth->isUserInRole(#[User], 'administrator')">
+<set var="qs" value="#[ENV.QUERY_STRING]">
+<do expression="#[qs] =~ s/(^|&|;)mode=[^&;]+//o">
+<do expression="#[qs] =~ s/[&;]{2,}/;/go">
+<do expression="#[qs] =~ s/(^[&;]|[&;]$)//go">
+<if condition="#[qs]">
+<set var="qs" value="';'.#[qs]">
+</if>
+<li><span class="l1"><a href="?mode=admin#[qs]">Администрирование</a></span>
+</if>
+</ul>
+
+<if condition="0">
+&bull; <a href="#[ENV.PATH_INFO]?layout=map;-nav.back=#[back|URL];#[qs]">Карта</a>
+</if>
+</div>
+<div id="content">
