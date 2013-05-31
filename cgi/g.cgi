@@ -568,7 +568,7 @@ sub thumbnail
   {
     my $t2 = [gettimeofday];
     $Image = POEM::Entity->new('gallery::image')->loadByPath($ENV{PATH_INFO},0);
-    POEM::DBC->new()->do("INSERT INTO gallery_image_log VALUES(".$Image->ID.", ".$ENV{POEM_USER}->ID.", ".($square ? 5 : 4).", NOW())");
+    POEM::DBC->new()->do("INSERT INTO gallery_image_log VALUES(".$Image->ID.", ".$ENV{POEM_USER}->ID.", 4, NOW())");
     my $t3 = [gettimeofday];
     print STDERR "DB: ".tv_interval($t2, $t3)." s\n";
     exit(0);
