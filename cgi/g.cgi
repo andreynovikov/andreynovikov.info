@@ -1,11 +1,5 @@
 #!/usr/bin/perl
 
-###############
-#
-# force_recreate - принудительно перегенерирует превьюшки
-#
-###############
-
 BEGIN { require '.poem'; }
 
 use strict;
@@ -383,8 +377,7 @@ sub rotate
   $image->Read($path);
   $image->Rotate(degrees => $INPUT->{degrees});
   $image->Write($path);
-  make_thumbnail($path, 1, 0);
-  make_thumbnail($path, 1, 1);
+  remove_thumbnail($path);
   $Response->redirect($ENV{HTTP_REFERER});
 }
 
@@ -544,62 +537,18 @@ sub distance
   return acos(sin($lat1)*sin($lat2)+cos($lat1)*cos($lat2)*cos($lng2-$lng1))*6371; # kilometres
 }
 
-sub make_thumbnail
+sub remove_thumbnail
 {
   my $path = shift;
-  my $force = shift;
-  my $square = shift;
 
   my $tpath = $path;
   $tpath =~ s/\/([^\/]+)$//;
   my $file = $1;
   my $tdir = $tpath . '/thumbs';
-  my $s = $square ? 's' : '';
-  $tpath .= '/thumbs/'.$s.'t-'.$file;
-  if (! -f $tpath || $force)
+  $tpath .= '/thumbs/t-'.$file;
+  if (-f $tpath)
   {
-    my $data;
-    if (! -d $tdir)
-    {
-      mkdir($tdir,0755);
-    }
-    require Image::Magick;
-    my $t0 = [gettimeofday];
-    my $image = Image::Magick->new();
-#    my $t1 = [gettimeofday];
-    $image->Read($path);
-#    my $t2 = [gettimeofday];
-#    print STDERR "Read: ".tv_interval($t1, $t2)." s\n";
-    (my $ox, my $oy) = $image->Get('width','height');
-#    my $t3 = [gettimeofday];
-    my $e;
-    if ($square)
-    {
-      my $ns = $GConf->{sizes}{square_thumbnail} || 100;
-      my $nx = $ox > $oy ? int($ox / $oy * $ns) : $ns;
-      my $ny = $oy > $ox ? int($oy / $ox * $ns) : $ns;
-      my $tx = $nx > $ny ? int(($nx-$ny)/2) : 0;
-      my $ty = $ny > $nx ? int(($ny-$nx)/2) : 0;
-      $e = $image->Thumbnail(width=>$nx, height=>$ny);
-      $e = $e || $image->Crop(geometry=>"${ns}x${ns}+${tx}+${ty}");
-    }
-    else
-    {
-      my $ny = $GConf->{sizes}{thumbnail} || 100;
-      my $nx = int($ox / $oy * $ny);
-      $e = $image->Thumbnail(width=>$nx, height=>$ny);
-    }
-#    my $t4 = [gettimeofday];
-#    print STDERR "Resize: ".tv_interval($t3, $t4)." s\n";
-    if ($e)
-    {
-      print STDERR "Thumbnail creation error: $e\n";
-      return undef;
-    }
-    $image->Write($tpath);
-#    my $t5 = [gettimeofday];
-#    print STDERR "Write: ".tv_interval($t4, $t5)." s\n";
-#    print STDERR "Total: ".tv_interval($t0, $t5)." s\n\n";
+    unlink $tpath;
   }
   return $tpath;
 }
@@ -607,8 +556,11 @@ sub make_thumbnail
 sub thumbnail
 {
   my $path = $ENV{DOCUMENT_ROOT} . $ENV{PATH_INFO};
-  my $square = $INPUT->{format} eq 'square';
-  my $tpath = make_thumbnail($path, $INPUT->{force_recreate}, $square);
+  my $tpath = $path;
+  $tpath =~ s/\/([^\/]+)$//;
+  my $file = $1;
+  my $tdir = $tpath . '/thumbs';
+  $tpath .= '/thumbs/t-'.$file;
 
   POEM::DBC->new()->disconnect();
 
