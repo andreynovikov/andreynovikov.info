@@ -1,0 +1,3 @@
+[submodule "pelican/html5up-striped"]
+	path = pelican/html5up-striped
+	url = git@github.com:andreynovikov/pelican-html5up-striped.git
