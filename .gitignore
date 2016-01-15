@@ -1,0 +1,4 @@
+logs/
+pelican/output/
+
+__pycache__/
