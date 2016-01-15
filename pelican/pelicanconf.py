@@ -48,5 +48,5 @@ SOCIAL = (('google-plus', 'https://plus.google.com/100618994892995632809'),
 THEME = 'html5up-striped'
 
 PROFILE_IMG_URL = 'https://secure.gravatar.com/avatar/b829de587134a496f79b4152f5561b61?s=100'
-COPYRIGHT = 'Andrey Novikov'
+COPYRIGHT = '<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> by Andrey Novikov unless otherwise marked'
 DISQUS_SITENAME = 'andreynovikov-info'
