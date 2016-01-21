@@ -1,6 +1,5 @@
 Title: Коротко о маниях и маньяках
 Date: 2015-12-28 13:31
-Modified: 2015-12-28 13:31
 Category: Автомобили
 Tags: переделка, 70ка
 Slug: cars-76-buttons
