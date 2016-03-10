@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 #AUTHOR = 'Andrey Novikov'
 SITENAME = 'Andrey Novikov'
-SITEURL = 'http://andreynovikov.info'
+SITEURL = 'https://andreynovikov.info'
 
 PATH = 'content'
 PLUGIN_PATHS = ['pelican-plugins']
@@ -40,7 +40,7 @@ SOCIAL = (('google-plus', 'https://plus.google.com/100618994892995632809'),
           ('github', 'http://github.com/andreynovikov'),
           ('stack-overflow', 'http://stackoverflow.com/users/488489/andrey-novikov'),)
 
-#DEFAULT_PAGINATION = False
+DEFAULT_PAGINATION = 5
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
@@ -50,3 +50,4 @@ THEME = 'html5up-striped'
 PROFILE_IMG_URL = 'https://secure.gravatar.com/avatar/b829de587134a496f79b4152f5561b61?s=100'
 COPYRIGHT = '<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> by Andrey Novikov unless otherwise marked'
 DISQUS_SITENAME = 'andreynovikov-info'
+GOOGLE_ANALYTICS = 'UA-72552438-1'
