@@ -48,4 +48,4 @@ RELATIVE_URLS = True
 THEME = 'html5up-striped'
 
 PROFILE_IMG_URL = 'https://secure.gravatar.com/avatar/b829de587134a496f79b4152f5561b61?s=100'
-COPYRIGHT = '<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> by Andrey Novikov unless otherwise marked'
+COPYRIGHT = '<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><br/>by Andrey Novikov unless otherwise marked'
