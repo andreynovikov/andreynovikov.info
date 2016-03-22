@@ -8,7 +8,7 @@ SITEURL = ''
 
 PATH = 'content'
 PLUGIN_PATHS = ['pelican-plugins']
-PLUGINS = ['tag_cloud','summary']
+PLUGINS = ['tag_cloud','summary', 'sitemap']
 
 TIMEZONE = 'Europe/Moscow'
 
@@ -41,6 +41,19 @@ SOCIAL = (('google-plus', 'https://plus.google.com/100618994892995632809'),
           ('stack-overflow', 'http://stackoverflow.com/users/488489/andrey-novikov'),)
 
 DEFAULT_PAGINATION = 5
+
+SITEMAP = {'format': 'xml',
+           'priorities': {
+               'articles': 0.3,
+               'indexes': 0.5,
+               'pages': 1.0
+           },
+           'changefreqs': {
+               'articles': 'monthly',
+               'indexes': 'weekly',
+               'pages': 'yearly'
+           }
+}
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
