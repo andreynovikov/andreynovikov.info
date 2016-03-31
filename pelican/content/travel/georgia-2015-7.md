@@ -3,6 +3,7 @@ Date: 2016-03-16 00:35
 Category: Путешествия
 Tags: путешествие, 70ка, Грузия
 Slug: travel-2015-georgia-7
+ImagePosition: 75%
 
 ![](/photos/travel/Georgia/2015/IMG_2093.JPG)
 
