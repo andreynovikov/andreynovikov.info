@@ -8,9 +8,9 @@ SITEURL = ''
 
 PATH = 'content'
 PLUGIN_PATHS = ['pelican-plugins']
-PLUGINS = ['tag_cloud','summary', 'sitemap']
+PLUGINS = ['tag_cloud','summary','sitemap']
 
-MD_EXTENSIONS = ['del_ins']
+MD_EXTENSIONS = ['codehilite(css_class=highlight)','extra','del_ins']
 
 TIMEZONE = 'Europe/Moscow'
 
