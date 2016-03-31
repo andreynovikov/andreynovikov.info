@@ -10,6 +10,8 @@ PATH = 'content'
 PLUGIN_PATHS = ['pelican-plugins']
 PLUGINS = ['tag_cloud','summary', 'sitemap']
 
+MD_EXTENSIONS = ['del_ins']
+
 TIMEZONE = 'Europe/Moscow'
 
 DEFAULT_LANG = 'ru'
