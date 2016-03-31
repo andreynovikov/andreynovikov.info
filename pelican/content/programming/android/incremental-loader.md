@@ -1,5 +1,5 @@
 Title: Implementing Android incremental loader
-Date: 2016-03-31 17:15
+Date: 2016-03-31 17:37
 Category: Программирование
 Tags:программирование, android
 Slug: programming-android-incremental-loader
@@ -20,7 +20,7 @@ We hold loaded data as usual:
 	:::java
     private List<DataSource> mData;
 
-When Loader starts it delivers already awaylable data and initiates data change observer. If any data is added or removed data state holder is updated.
+When Loader starts it delivers already available data and initiates data change observer. If any data is added or removed data state holder is updated.
 
     :::java
     @Override
@@ -147,4 +147,3 @@ When result is ready we join existing data with newly loaded data.
 Data is delivered to consumer in a full set but all object instances are preserved thus not breaking the data manipulation logic of data consumer.
 
 Here arrives a good question: what happens when data consumer updates or deletes some data? This means that corresponding file will be modified or removed and observer will detect that. This case is already handled by the code. May be you have noticed a call to `source.isLoaded()` - this is the flag of internal data state. When data is loaded and consumer then modifies it, flag is set and Loader just skips the corresponding file. If data is wished to be removed, corresponding file is deleted and that flag is unset. In that case Loader removes data associated with this file.
-
