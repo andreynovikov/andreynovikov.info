@@ -1,9 +1,11 @@
 Title: Restarting service after application update in Android
 Date: 2012-11-20 10:58
-Modified: 2012-11-20 10:58
+Modified: 2016-04-01 14:42
 Category: Программирование
 Tags:программирование, android
 Slug: programming-android-updated-service-restart
+Lang: en
+Translation: no
 
 If your application is designed as a background service updating it can be a pain because running application is killed during the update. Fortunately your application can request to receive package update broadcast in AndroidManifest.xml (I have added boot completed broadcast here to show that the logic is pretty much the same):
 

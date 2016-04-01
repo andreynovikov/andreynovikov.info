@@ -1,8 +1,11 @@
 Title: Implementing Android incremental loader
 Date: 2016-03-31 17:37
+Modified: 2016-04-01 14:42
 Category: Программирование
 Tags:программирование, android
 Slug: programming-android-incremental-loader
+Lang: en
+Translation: no
 
 There is an outstanding article on [implementing Android loaders](http://www.androiddesignpatterns.com/2012/08/implementing-loaders.html). However it covers classic pattern when data is being reloaded each time any part of it is modified. In my case I had to manipulate huge files, some of them taking minutes to load, so I could not afford reloading them on each data set change.
 

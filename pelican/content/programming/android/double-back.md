@@ -1,9 +1,11 @@
 Title: User friendly double back exit
 Date: 2013-02-11 00:08
-Modified: 2013-02-11 00:08
+Modified: 2016-04-01 14:42
 Category: Программирование
 Tags:программирование, android
 Slug: programming-android-double-back
+Lang: en
+Translation: no
 
 This is the common Android UI pattern to use double Back press to confirm exit from application. It has simple implementation. However there is one thing developers do not think about: when user presses Back the toast with confirmation message is continuing to be displayed after application is already quit.
 
