@@ -2,7 +2,7 @@ Title: Restarting service after application update in Android
 Date: 2012-11-20 10:58
 Modified: 2016-04-01 14:42
 Category: Программирование
-Tags:программирование, android
+Tags: android
 Slug: programming-android-updated-service-restart
 Lang: en
 Translation: no

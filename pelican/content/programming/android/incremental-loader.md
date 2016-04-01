@@ -2,7 +2,7 @@ Title: Implementing Android incremental loader
 Date: 2016-03-31 17:37
 Modified: 2016-04-01 14:42
 Category: Программирование
-Tags:программирование, android
+Tags: android
 Slug: programming-android-incremental-loader
 Lang: en
 Translation: no

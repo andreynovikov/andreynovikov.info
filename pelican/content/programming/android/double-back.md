@@ -2,7 +2,7 @@ Title: User friendly double back exit
 Date: 2013-02-11 00:08
 Modified: 2016-04-01 14:42
 Category: Программирование
-Tags:программирование, android
+Tags: android
 Slug: programming-android-double-back
 Lang: en
 Translation: no

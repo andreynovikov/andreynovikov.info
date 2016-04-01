@@ -1,7 +1,7 @@
 Title: Грузия 2015, послесловие
 Date: 2016-03-16 00:35
 Category: Путешествия
-Tags: путешествие, 70ка, Грузия
+Tags: 70ка, Грузия
 Slug: travel-2015-georgia-7
 ImagePosition: 75%
 

@@ -1,7 +1,7 @@
 Title: Грузия 2015, часть первая
 Date: 2015-09-25 12:26
 Category: Путешествия
-Tags: путешествие, 70ка, Грузия
+Tags: 70ка, Грузия
 Slug: travel-2015-georgia-1
 Image: /photos/travel/Georgia/2015/DSC_7244.JPG
 ImagePosition: 70%

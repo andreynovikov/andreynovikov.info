@@ -1,7 +1,7 @@
 Title: Грузия 2015, часть пятая
 Date: 2016-01-13 10:20
 Category: Путешествия
-Tags: путешествие, 70ка, Грузия
+Tags: 70ка, Грузия
 Slug: travel-2015-georgia-5
 Image: /photos/travel/Georgia/2015/IMG_2452.JPG
 ImagePosition: 70%

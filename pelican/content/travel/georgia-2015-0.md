@@ -1,7 +1,7 @@
 Title: Грузия 2015, предисловие
 Date: 2015-09-23 15:11
 Category: Путешествия
-Tags: путешествие, 70ка, Грузия
+Tags: 70ка, Грузия
 Slug: travel-2015-georgia-0
 
 ![](/photos/travel/Georgia/2015/DSC_8027.JPG)

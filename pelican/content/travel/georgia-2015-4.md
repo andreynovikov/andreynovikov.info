@@ -1,7 +1,7 @@
 Title: Грузия 2015, часть четвёртая
 Date: 2015-12-21 09:39
 Category: Путешествия
-Tags: путешествие, 70ка, Грузия
+Tags: 70ка, Грузия
 Slug: travel-2015-georgia-4
 Image: /photos/travel/Georgia/2015/DSC_7730.JPG
 ImagePosition: 100%
