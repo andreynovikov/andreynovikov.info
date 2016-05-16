@@ -16,7 +16,7 @@ TIMEZONE = 'Europe/Moscow'
 
 DEFAULT_LANG = 'ru'
 
-STATIC_PATHS = ['cars','travel']
+STATIC_PATHS = ['cars','gis','travel']
 
 SUMMARY_MAX_LENGTH = 120
 
