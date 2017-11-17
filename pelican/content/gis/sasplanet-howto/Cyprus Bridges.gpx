@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd"
+version="1.1">
+   <wpt lat="34.8917" lon="32.6875">
+      <name>Roudia Bridge</name>
+   </wpt>
+   <wpt lat="34.8893" lon="32.7477">
+      <name>Kelefos Bridge</name>
+   </wpt>
+   <wpt lat="34.8975" lon="32.7750">
+      <name>Elia Bridge</name>
+   </wpt>
+</gpx>
