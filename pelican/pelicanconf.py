@@ -10,7 +10,15 @@ PATH = 'content'
 PLUGIN_PATHS = ['pelican-plugins']
 PLUGINS = ['tag_cloud','summary','sitemap','liquid_tags.youtube']
 
-MD_EXTENSIONS = ['codehilite(css_class=highlight)','extra','del_ins']
+MARKDOWN = ['codehilite(css_class=highlight)','extra','del_ins']
+
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.codehilite': {'css_class': 'highlight'},
+        'markdown.extensions.extra': {},
+        'del_ins': {},
+    },
+}
 
 TIMEZONE = 'Europe/Moscow'
 
@@ -28,7 +36,8 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('Androzic', 'http://androzic.com/'),
+LINKS = (('MapTrek', 'http://maptrek.mobi'),
+         ('Androzic', 'http://androzic.com/'),
          ('Xpoint', 'http://xpoint.ru/user/1'),
          ('ФРИ', 'http://ezhe.ru/fri/527/'),)
 
