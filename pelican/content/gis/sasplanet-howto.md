@@ -1,7 +1,7 @@
 Title: When OSM is not enough, part 1
 Date: 2016-12-21 15:16
 Category: Картография
-Tags: maptrek
+Tags: maptrek, trekarta
 Slug: sasplanet-howto
 Image: /sasplanet-howto/IMG_0372.JPG
 ImagePosition: 40%
@@ -28,7 +28,7 @@ if you are brave and confident enough.)
 For the later task using OSM map along may be not enough: satellite map can become very handy in some situations. (During my
 trip via this route I two times came to the situation when the road was blocked - one time by a fence, second time by a landslide.)
 
-That's why I want to show you how to prepare custom offline maps for MapTrek from online sources. This is where a very handy
+That's why I want to show you how to prepare custom offline maps for Trekarta from online sources. This is where a very handy
 SAS.Planet application comes into place.
 
 ###Solution
@@ -77,15 +77,15 @@ Finally select the output file:
 ![]({attach}sasplanet-howto/07.png){: class="centered" }
 
 After export is finished transfer resulting file to device (it should have .mbtiles extension). Open file manager on
-device and tap the file. File open dialog should appear if you do this for the first time. Select _MapTrek data import_:
+device and tap the file. File open dialog should appear if you do this for the first time. Select _Trekarta data import_:
 
 ![]({attach}sasplanet-howto/08.png){: class="centered" }
 
-MapTrek will import the map to the internal folder (you can remove the source file after that):
+Trekarta will import the map to the internal folder (you can remove the source file after that):
 
 ![]({attach}sasplanet-howto/09.png){: class="centered" }
 
-Open MapTrek and tap _Maps_ button:
+Open Trekarta and tap _Maps_ button:
 
 ![]({attach}sasplanet-howto/10.png){: class="centered" }
 
@@ -100,7 +100,7 @@ You can see that it covers native OSM map, so you can play with transparency sli
 ###Conclusion
 
 SAS.Planet application is very powerful. Take time to explore its features to get maximum from it. You can create many
-map files and use them in MapTrek on demand. In fact MBTiles is popular format used by many other map applications, so
-once created you can use the same map in any application of your choice, not only in MapTrek.
+map files and use them in Trekarta on demand. In fact MBTiles is popular format used by many other map applications, so
+once created you can use the same map in any application of your choice, not only in Trekarta.
 
 [Next time]({filename}maptiler-howto.md) I will show you how to create a map from single image with a help of another great application.

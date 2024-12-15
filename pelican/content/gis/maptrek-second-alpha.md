@@ -1,7 +1,7 @@
 Title: MapTrek - second alpha coming
 Date: 2016-05-16 15:36
 Category: Картография
-Tags: maptrek
+Tags: maptrek, trekarta
 Slug: maptrek-second-alpha
 
 Development of [MapTrek](http://maptrek.mobi/) is going in full steam. The following is done in less then a month:

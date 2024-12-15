@@ -1,7 +1,7 @@
 Title: MapTrek alpha stage ended
 Date: 2016-07-01 12:54
 Category: Картография
-Tags: maptrek
+Tags: maptrek, trekarta
 Slug: maptrek-fourth-alpha
 
 I do not use landscape orientation in everyday life. That's why it is hard to come up with the proper layout. But after I make a decision that all panels will be mostly the same but will cling to the right edge further development was straightforward. For me the result looks great, I even want to try to use it for a while.

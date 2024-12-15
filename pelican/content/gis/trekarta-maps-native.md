@@ -1,10 +1,10 @@
 Title: Native maps
 Date: 2017-11-17 16:13
 Category: Картография
-Tags: maptrek
-Slug: maptrek-maps-native
+Tags: maptrek, trekarta
+Slug: trekarta-maps-native
 
-It took me more then a year to think up, prototype and develop proprietary format for MapTrek maps.
+It took me more then a year to think up, prototype and develop proprietary format for Trekarta maps.
 Two times I came to the halt and had to start from the very beginning but finally it was done.
 I know that proprietary formats are bad but mapsforge format that I was using is proprietary as well
 and has many limits I wanted to eliminate.
@@ -14,7 +14,7 @@ and has many limits I wanted to eliminate.
 At the beginning I wanted to make many before/after screenshots but when new maps were finally ready
 I was so tied that I managed to create only one pair:
 
-![]({attach}maptrek-maps-native.png){: class="centered" }
+![]({attach}trekarta-maps-native.png){: class="centered" }
 
 Forest is one of the most representative elements. On the first screen you can see how it is scratched
 and over-detailed. The next screen shows the transition from old format to another (upper area is loaded

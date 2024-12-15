@@ -1,7 +1,7 @@
 Title: Introducing new Android application: MapTrek
 Date: 2016-04-27 18:25
 Category: Картография
-Tags: maptrek
+Tags: maptrek, trekarta
 Slug: maptrek-first-alpha
 
 Long time ago I have started development of Androzic application. That days it was Android 1.6 and OziExplorer maps which I was using for navigation. Since that everything changed. Now Android is totally different, OziExplorer maps for my region are 30 years old and new maps are encoded in new proprietary format. After I have noticed that I didn't use ozf maps for more then a year I decided to write a new application with totally different concept in mind.

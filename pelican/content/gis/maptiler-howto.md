@@ -1,14 +1,14 @@
 Title: When OSM is not enough, part 2
 Date: 2016-12-22 16:56
 Category: Картография
-Tags: maptrek
+Tags: maptrek, trekarta
 Slug: maptiler-howto
 Image: /maptiler-howto/00.jpg
 Status: published
 
 ###Why?
 
-There are situations when a map comes as a one large graphic file. It can be an old-time scanned map, or a software generated water reservoir depth map, or downloaded map of a nature reserve park. Even in this case there are options to import such map in MapTrek. All you need is find a tool that will convert it to MBTiles format. And today I will show you how to do this by creating a usable map from scanned old-time map of Moscow dating back to the year of 1852.
+There are situations when a map comes as a one large graphic file. It can be an old-time scanned map, or a software generated water reservoir depth map, or downloaded map of a nature reserve park. Even in this case there are options to import such map in Trekarta. All you need is find a tool that will convert it to MBTiles format. And today I will show you how to do this by creating a usable map from scanned old-time map of Moscow dating back to the year of 1852.
 
 <!-- PELICAN_END_SUMMARY -->
 
@@ -68,11 +68,11 @@ When finished press _Save_ button. If everything is set press _Continue_ to save
 
 ![]({attach}maptiler-howto/12.png){: class="centered" }
 
-To be able to open the map in MapTrek select MBTiles as destination format:
+To be able to open the map in Trekarta select MBTiles as destination format:
 
 ![]({attach}maptiler-howto/13.png){: class="centered" }
 
-Press _Render_ and select destination file. The map will be generated to file. Next steps are as usual: transfer file to device and import it to MapTrek. The procedure is described in detail in [previous article]({filename}sasplanet-howto.md). After that you will be able to appreciate the result:
+Press _Render_ and select destination file. The map will be generated to file. Next steps are as usual: transfer file to device and import it to Trekarta. The procedure is described in detail in [previous article]({filename}sasplanet-howto.md). After that you will be able to appreciate the result:
 
 ![]({attach}maptiler-howto/14.png){: class="centered" }
 
