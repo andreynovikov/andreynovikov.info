@@ -18,7 +18,7 @@ TIMEZONE = 'Europe/Moscow'
 
 DEFAULT_LANG = 'ru'
 
-STATIC_PATHS = ['cars', 'gis','travel']
+STATIC_PATHS = ['cars','motos','gis','travel']
 
 SUMMARY_MAX_LENGTH = 120
 
@@ -31,8 +31,7 @@ AUTHOR_FEED_RSS = None
 
 # Blogroll
 LINKS = (
-    ('MapTrek', 'http://maptrek.mobi'),
-    ('Androzic', 'http://androzic.com/'),
+    ('Trekarta', 'https://trekarta.info/'),
     ('Xpoint', 'http://xpoint.ru/user/1'),
     ('ФРИ', 'http://ezhe.ru/fri/527/'),
 )
@@ -40,8 +39,8 @@ LINKS = (
 # Social widget
 SOCIAL = (
     ('google-plus', 'https://plus.google.com/100618994892995632809'),
-    ('facebook', 'http://www.facebook.com/andrey.g.novikov'),
-    ('twitter', 'http://twitter.com/andreynovikov'),
+    #('facebook', 'http://www.facebook.com/andrey.g.novikov'),
+    #('twitter', 'http://twitter.com/andreynovikov'),
     ('youtube', 'http://www.youtube.com/profile?user=novikovandrey'),
     ('flickr', 'http://www.flickr.com/photos/andreynovikov/'),
     #('panoramio', 'http://www.panoramio.com/user/725010'),
