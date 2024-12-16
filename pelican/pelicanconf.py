@@ -1,4 +1,4 @@
-AUTHOR = 'Andrey Novikov'
+#AUTHOR = 'Andrey Novikov'
 SITENAME = 'Andrey Novikov'
 SITEURL = ''
 
@@ -38,12 +38,12 @@ LINKS = (
 
 # Social widget
 SOCIAL = (
-    ('google-plus', 'https://plus.google.com/100618994892995632809'),
-    #('facebook', 'http://www.facebook.com/andrey.g.novikov'),
-    #('twitter', 'http://twitter.com/andreynovikov'),
+    # ('google-plus', 'https://plus.google.com/100618994892995632809'),
+    # ('facebook', 'http://www.facebook.com/andrey.g.novikov'),
+    # ('twitter', 'http://twitter.com/andreynovikov'),
     ('youtube', 'http://www.youtube.com/profile?user=novikovandrey'),
-    ('flickr', 'http://www.flickr.com/photos/andreynovikov/'),
-    #('panoramio', 'http://www.panoramio.com/user/725010'),
+    # ('flickr', 'http://www.flickr.com/photos/andreynovikov/'),
+    # ('panoramio', 'http://www.panoramio.com/user/725010'),
     ('github', 'http://github.com/andreynovikov'),
     ('stack-overflow', 'http://stackoverflow.com/users/488489/andrey-novikov'),
 )

@@ -8,7 +8,7 @@ sys.path.append(os.curdir)
 from pelicanconf import *
 
 # If your site is available via HTTPS, make sure SITEURL begins with https://
-SITEURL = "https://andreynovikov.info"
+SITEURL = 'https://andreynovikov.info'
 RELATIVE_URLS = False
 
 # FEED_ALL_ATOM = "feeds/all.atom.xml"
@@ -18,7 +18,8 @@ DELETE_OUTPUT_DIRECTORY = True
 
 # Following items are often useful when publishing
 
-DISQUS_SITENAME = "andreynovikov-info"
+DISQUS_SITENAME = 'andreynovikov-info'
+GOOGLE_SITE_VERIFICATION = 'Kpb-e90rCCQ-TI7guNhsEwANcizR07Hd2ddV7zvEn9Q'
 ANALYTICS = """
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HVMCJLW9LT"></script>
