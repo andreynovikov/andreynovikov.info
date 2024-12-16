@@ -1,0 +1,6 @@
+# robots.txt for http://andreynovikov.info/
+
+User-agent: *
+Disallow: /photos/*?
+
+Sitemap: https://andreynovikov.info/sitemap.xml
