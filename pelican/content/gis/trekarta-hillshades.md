@@ -3,6 +3,7 @@ Date: 2017-11-29 12:52
 Category: Картография
 Tags: maptrek, trekarta
 Slug: trekarta-hillshades
+Image: /trekarta-hillshades1.png
 
 When I decided to develop Trekarta I didn't plan to implement hillshades as its maps are vector but hillshades are raster.
 Later, when I was traveling for the first time with my app through mountains and what-it-looked-like one hour trip

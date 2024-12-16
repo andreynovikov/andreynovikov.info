@@ -3,6 +3,7 @@ Date: 2017-11-17 16:13
 Category: Картография
 Tags: maptrek, trekarta
 Slug: trekarta-maps-native
+Image: /trekarta-maps-native.png
 
 It took me more then a year to think up, prototype and develop proprietary format for Trekarta maps.
 Two times I came to the halt and had to start from the very beginning but finally it was done.
