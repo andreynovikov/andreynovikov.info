@@ -1,5 +1,6 @@
-logs/
+galleria-js/
 pelican/output/
+photos/
 
 .venv/
 __pycache__/
